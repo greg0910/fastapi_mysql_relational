@@ -12,7 +12,7 @@ class User(Base):
     password: Mapped[str] = mapped_column(String(100), nullable=False)
     creado_en: Mapped[datetime] = mapped_column(DateTime,default=datetime.utcnow, nullable=False)
 
-    perfil: Mapped["Perfil"] = relationship(back_populates="user", uselist=False)
+    perfil: Mapped["Perfil"] = relationship(back_populates="user", uselist=False,cascade= "all,delete-orphan")
 
 
 class Perfil(Base):
